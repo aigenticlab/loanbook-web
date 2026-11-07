@@ -1,10 +1,10 @@
-# Loanbook web app (Conister Bank)
+# Loanbook web app (Crestion Bank)
 
 Fork of [openMF/web-app](https://github.com/openMF/web-app) used by [aigenticlab/loanbook-mvp](https://github.com/aigenticlab/loanbook-mvp). The upstream code is under the Mozilla Public License 2.0; changes to upstream files in this fork are shared here under the same licence.
 
 ## Base
 
-- Branch `conister`, based on upstream `dev` at `10d24b85` (28 January 2026). Upstream publishes no source tag for the `openmf/web-app:1.12` image used before this fork, so this is the `dev` commit current when that image was pushed. Tested against Apache Fineract 1.12.1.
+- Branch `crestion`, based on upstream `dev` at `10d24b85` (28 January 2026). Upstream publishes no source tag for the `openmf/web-app:1.12` image used before this fork, so this is the `dev` commit current when that image was pushed. Tested against Apache Fineract 1.12.1.
 - Images: tag a commit `loanbook-vX.Y.Z` and the `Loanbook image` workflow publishes `ghcr.io/aigenticlab/loanbook-web:vX.Y.Z`.
 
 ## What we changed
@@ -15,21 +15,21 @@ Our own work lives in separate files where possible, so upstream fixes still mer
 
 | Path | Purpose |
 |---|---|
-| `src/theme/conister/_tokens.scss` | Conister Bank design tokens (copied from loanbook-mvp `theme/conister/`) |
-| `src/theme/conister/_conister.scss` | Theme overrides: colours, Hanken Grotesk, 3px buttons, flat bordered cards, white header, hidden out-of-scope features |
+| `src/theme/crestion/_tokens.scss` | Crestion Bank design tokens (copied from loanbook-mvp `theme/crestion/`) |
+| `src/theme/crestion/_crestion.scss` | Theme overrides: colours, Hanken Grotesk, 3px buttons, flat bordered cards, white header, hidden out-of-scope features |
 | `src/app/loanbook/loanbook-translate-loader.ts` | Loads upstream translations, then applies the Loanbook overlay |
 | `src/assets/translations/loanbook/en-US.json` | Label overlay: Client > Lessee, Loan > Agreement, Office > Branch, Loan product > Product, Loan officer > Account manager, Center > Centre, app name "Loanbook" |
-| `src/app/loanbook/login/` | Conister sign-in screen. Extends the upstream `LoginComponent`, so the login logic is unchanged |
-| `src/assets/images/conister/logo-mark.svg` | Placeholder mark until the client supplies logo artwork |
+| `src/app/loanbook/login/` | Crestion sign-in screen. Extends the upstream `LoginComponent`, so the login logic is unchanged |
+| `src/assets/images/crestion/logo-mark.svg` | Placeholder mark until the client supplies logo artwork |
 | `.github/workflows/loanbook-image.yml` | Builds and pushes the image to GHCR |
 
 **Edits to upstream files (kept small)**
 
 | File | Change |
 |---|---|
-| `src/theme/_material-palette.scss` | Primary and accent palettes set to Conister purple and lime |
+| `src/theme/_material-palette.scss` | Primary and accent palettes set to Crestion purple and lime |
 | `src/theme/mifosx-theme.scss` | Typography font family |
-| `src/main.scss` | `@use 'theme/conister/conister'` (last import) |
+| `src/main.scss` | `@use 'theme/crestion/crestion'` (last import) |
 | `src/app/app.module.ts` | Uses `LoanbookTranslateLoader` |
 | `src/app/login/login-routing.module.ts` | Routes `/login` to `LoanbookLoginComponent` |
 | `src/index.html` | Hanken Grotesk font link, favicon |
@@ -41,7 +41,7 @@ Our own work lives in separate files where possible, so upstream fixes still mer
 
 ## Hiding features outside the MVP
 
-Elements marked `class="lb-out-of-scope"` are hidden by one rule in `src/theme/conister/_conister.scss`. They are hidden, not removed: the routes still exist, and Fineract permissions remain the real control. To bring a feature back, delete the class from its element.
+Elements marked `class="lb-out-of-scope"` are hidden by one rule in `src/theme/crestion/_crestion.scss`. They are hidden, not removed: the routes still exist, and Fineract permissions remain the real control. To bring a feature back, delete the class from its element.
 
 ## Known gaps
 

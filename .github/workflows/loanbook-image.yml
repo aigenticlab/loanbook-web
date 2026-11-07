@@ -1,6 +1,6 @@
 # Loanbook: build the themed web app image and push it to GHCR.
 #
-# Tag a commit on the "conister" branch with loanbook-vX.Y.Z to publish
+# Tag a commit on the "crestion" branch with loanbook-vX.Y.Z to publish
 #   ghcr.io/aigenticlab/loanbook-web:vX.Y.Z
 # Then set WEBAPP_IMAGE / WEBAPP_TAG in aigenticlab/loanbook-mvp.
 name: Loanbook image

@@ -19,8 +19,8 @@
 @use 'lightgallery/scss/lg-zoom' as *;
 @use 'lightgallery/scss/lg-fullscreen' as *;
 @use 'app/core/error-handler/error-handler.component';
-// Loanbook: Conister Bank theme, loaded last so it wins. See src/theme/conister/.
-@use 'theme/conister/conister';
+// Loanbook: Crestion Bank theme, loaded last so it wins. See src/theme/crestion/.
+@use 'theme/crestion/crestion';
 
 // Global Imports
 

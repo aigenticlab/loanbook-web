@@ -1,10 +1,10 @@
 /**
- * Loanbook: Conister Bank sign-in screen.
+ * Loanbook: Crestion Bank sign-in screen.
  *
  * Reuses all of the upstream LoginComponent behaviour (password expiry,
  * two-factor authentication, redirects) and only replaces the template and
  * styles, so upstream fixes to the login logic still apply.
- * Design: "Conister Loanbook Screens" > Login (Claude Design).
+ * Design: "Crestion Loanbook Screens" > Login (Claude Design).
  */
 import { Component } from '@angular/core';
 

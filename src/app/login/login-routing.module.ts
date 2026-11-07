@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 /** Custom Components */
-// Loanbook: Conister Bank sign-in screen (same logic, new template).
+// Loanbook: Crestion Bank sign-in screen (same logic, new template).
 import { LoanbookLoginComponent } from '../loanbook/login/loanbook-login.component';
 
 /** Login Routes */
