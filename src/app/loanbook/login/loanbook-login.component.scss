@@ -1,0 +1,209 @@
+// Loanbook: Conister Bank sign-in. Values from src/theme/conister/_tokens.scss.
+@use 'theme/conister/tokens' as cb;
+
+:host {
+  display: block;
+}
+
+.lb-login {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: cb.$cb-font-family;
+  color: cb.$cb-near-black;
+  background: cb.$cb-off-white;
+}
+
+// --- Left: purple gradient panel with the lime rule -------------------------
+.lb-brand {
+  flex: 1 1 520px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 60px 80px;
+  background: cb.$cb-gradient-panel;
+  color: cb.$cb-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+
+  h1 {
+    margin: 0;
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: cb.$cb-fw-bold;
+    letter-spacing: -0.01em;
+    color: cb.$cb-white;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.lb-wordmark {
+  font-size: 26px;
+  font-weight: cb.$cb-fw-bold;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.lb-brand-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 520px;
+
+  p {
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: cb.$cb-fw-light;
+  }
+}
+
+.lb-brand-footer {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.lb-rule {
+  height: cb.$cb-rule;
+}
+
+.lb-rule-lime {
+  width: 245px;
+  background: cb.$cb-lime;
+}
+
+.lb-rule-lilac {
+  width: 120px;
+  background: cb.$cb-lilac;
+}
+
+// --- Right: white sign-in card ----------------------------------------------
+.lb-panel {
+  flex: 1 1 520px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lb-card {
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+  background: cb.$cb-white;
+  border: cb.$cb-border-card;
+  border-radius: cb.$cb-radius-card;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lb-card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  h2 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: cb.$cb-fw-bold;
+    color: cb.$cb-purple;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: cb.$cb-muted-text;
+  }
+}
+
+.lb-card-footer {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid cb.$cb-grey-rule;
+  font-size: 12px;
+  line-height: 1.4;
+  color: cb.$cb-muted-text;
+}
+
+// --- Restyle the upstream login form inside the card ------------------------
+:host ::ng-deep {
+  mifosx-login-form form {
+    gap: 16px;
+  }
+
+  // Flat white fields with the purple border, no icons
+  .login-field .mdc-text-field--filled,
+  .login-field .mat-mdc-text-field-wrapper {
+    background: cb.$cb-white !important;
+    border: 1px solid cb.$cb-purple-border;
+    border-radius: cb.$cb-radius-button !important;
+  }
+
+  .login-field .mdc-line-ripple {
+    display: none;
+  }
+
+  .login-field mifosx-m3-icon[matIconPrefix] {
+    display: none;
+  }
+
+  .login-field .mdc-floating-label,
+  .login-field .mat-mdc-floating-label {
+    color: cb.$cb-near-black !important;
+    font-weight: cb.$cb-fw-medium;
+  }
+
+  // Purple Sign in button, 48px, 3px radius
+  .login-submit-button,
+  .login-submit-button button,
+  .login-submit-button md-filled-button {
+    width: 100%;
+  }
+
+  .login-submit-button md-filled-button,
+  .login-submit-button button {
+    min-height: 48px;
+    --md-filled-button-container-height: 48px;
+    --md-filled-button-container-color: #{cb.$cb-purple};
+    --md-filled-button-container-shape: #{cb.$cb-radius-button};
+    --md-filled-button-label-text-size: 16px;
+    border-radius: cb.$cb-radius-button;
+  }
+
+  // No self-service password reset in Fineract: the card footer says who to contact.
+  .login-actions,
+  .forgot-password-link {
+    display: none !important;
+  }
+}
+
+// Narrow screens: stack the panels, smaller hero
+/* stylelint-disable-next-line media-feature-range-notation -- Safari compatibility */
+@media (max-width: 768px) {
+  .lb-brand {
+    padding: 32px 24px;
+    gap: 24px;
+
+    h1 {
+      font-size: 36px;
+      line-height: 44px;
+    }
+  }
+
+  .lb-panel {
+    padding: 32px 16px;
+  }
+
+  .lb-card {
+    padding: 24px;
+  }
+}

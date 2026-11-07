@@ -1,0 +1,69 @@
+// Conister Bank tokens for the Loanbook web app fork.
+// Source of truth: "Conister Bank Design System" in Claude Design
+//   https://claude.ai/artifact/Y1pZz89Fr7o4de2Qw8tNWN
+// Do not hand-edit colours elsewhere in the app. Change them in Claude Design,
+// then update this file.
+
+// --- Core palette ---
+$cb-purple:        #522B80; // brand, headings, primary buttons (10.4:1 on white)
+$cb-lime:          #94D500; // accent: ONE use per screen, fill only, near-black text on it
+$cb-lilac:         #9A78B5; // rules, dividers, large text only (3.7:1 on white)
+$cb-off-white:     #F5F5F5; // page background
+$cb-white:         #FFFFFF; // cards, panels
+$cb-near-black:    #050709; // body text
+
+// --- Supporting ---
+$cb-purple-mid:    #A56FA8; // header bottom border (3px)
+$cb-purple-border: #946CAB; // card border (2px) - the signature treatment
+$cb-lilac-pale:    #E2D0E3; // tint panels, table stripe base
+$cb-lavender-pale: #E8E8F4; // subtle fills, image placeholders
+$cb-grey-rule:     #E5E5E5; // hairlines
+$cb-muted-text:    #4A4A52; // secondary text that must pass 4.5:1 (lilac does not)
+
+// --- States ---
+$cb-purple-hover:  #43226A;
+$cb-purple-active: #391C5A;
+$cb-lime-hover:    #86C200;
+$cb-lime-active:   #78AE00;
+$cb-focus-ring:    0 0 0 3px rgba(82, 43, 128, .35);
+
+// --- Gradient (large panels only, never behind body text) ---
+$cb-gradient-panel: linear-gradient(180deg, #7E5F98 0%, #704E8D 100%);
+
+// --- Type ---
+// Geomanist is licensed; Hanken Grotesk (Google Fonts) stands in until the
+// web font files are supplied.
+$cb-font-family: "Geomanist", "Hanken Grotesk", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+$cb-fw-light: 300;
+$cb-fw-regular: 400;
+$cb-fw-medium: 500;
+$cb-fw-bold: 700;
+
+// --- Shape ---
+$cb-radius-button: 3px;
+$cb-radius-card:   8px;
+$cb-radius-tile:   10px;
+$cb-border-card:   2px solid $cb-purple-border;
+$cb-rule:          6px; // heading underline bar, ~245px wide
+
+// --- Spacing ---
+$cb-space: (1: 4px, 2: 8px, 3: 12px, 4: 16px, 5: 24px, 6: 32px, 7: 40px, 8: 60px, 9: 80px);
+
+// --- CSS custom properties (for plain CSS and new Loanbook pages) ---
+:root {
+  --cb-purple: #{$cb-purple};
+  --cb-lime: #{$cb-lime};
+  --cb-lilac: #{$cb-lilac};
+  --cb-page: #{$cb-off-white};
+  --cb-card: #{$cb-white};
+  --cb-text: #{$cb-near-black};
+  --cb-text-muted: #{$cb-muted-text};
+  --cb-card-border: #{$cb-purple-border};
+  --cb-header-border: #{$cb-purple-mid};
+  --cb-tint: #{$cb-lilac-pale};
+  --cb-rule: #{$cb-grey-rule};
+  --cb-font: #{$cb-font-family};
+  --cb-radius-button: #{$cb-radius-button};
+  --cb-radius-card: #{$cb-radius-card};
+  --cb-focus-ring: #{$cb-focus-ring};
+}

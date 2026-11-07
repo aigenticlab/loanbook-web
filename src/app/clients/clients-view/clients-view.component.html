@@ -252,12 +252,13 @@
         </button>
         <button
           mat-menu-item
+          class="lb-out-of-scope"
           *mifosxHasPermission="'CREATE_SAVINGSACCOUNT'"
           [routerLink]="['savings-accounts', 'create']"
         >
           {{ 'labels.buttons.New Savings Account' | translate }}
         </button>
-        <button mat-menu-item *mifosxHasPermission="'CREATE_SHAREACCOUNT'" [routerLink]="['shares-accounts', 'create']">
+        <button mat-menu-item class="lb-out-of-scope" *mifosxHasPermission="'CREATE_SHAREACCOUNT'" [routerLink]="['shares-accounts', 'create']">
           {{ 'labels.buttons.New Share Account' | translate }}
         </button>
         <button

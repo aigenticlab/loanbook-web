@@ -15,7 +15,7 @@
   <div class="navigation-panel layout-column">
     <!-- TODO: Allow customization by organization -->
     <div class="app-brand" [routerLink]="['/home']">
-      <img src="assets/images/MifosX_logo.png" alt="app-logo" class="app-logo" />
+      <img src="assets/images/conister/logo-mark.svg" alt="Conister Bank" class="app-logo" />
       <span #logo class="app-logo-text text-muted">{{ 'APP_NAME' | translate }}</span>
     </div>
 
@@ -105,6 +105,7 @@
           <a matLine>{{ 'labels.menus.Checker Inbox and Tasks' | translate }}</a>
         </mat-list-item>
         <mat-list-item
+          class="lb-out-of-scope"
           [routerLink]="['/collections/collection-sheet']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'labels.menus.Collection Sheet' | translate }}"
@@ -117,6 +118,7 @@
           <a matLine>{{ 'labels.menus.Collection Sheet' | translate }}</a>
         </mat-list-item>
         <mat-list-item
+          class="lb-out-of-scope"
           [routerLink]="['/collections/individual-collection-sheet']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'tooltips.Individual Collection Sheet' | translate }}"

@@ -1,0 +1,138 @@
+/**
+ * Loanbook: Conister Bank theme overrides.
+ *
+ * Loaded last from src/main.scss so it wins over upstream styles without
+ * editing them. Colours come from _tokens.scss only; never hard-code them here.
+ * Brand rules: theme/conister/README.md in aigenticlab/loanbook-mvp.
+ */
+
+@use 'tokens' as cb;
+
+// ---------------------------------------------------------------------------
+// Design tokens consumed by upstream components (Material 3 / Material Web)
+// ---------------------------------------------------------------------------
+:root,
+html body {
+  --md-sys-color-primary: #{cb.$cb-purple};
+  --md-sys-color-on-primary: #{cb.$cb-white};
+  --md-sys-color-primary-container: #{cb.$cb-lilac-pale};
+  --md-sys-color-on-primary-container: #{cb.$cb-purple-active};
+  --md-sys-color-secondary: #{cb.$cb-purple};
+  --md-sys-color-background: #{cb.$cb-off-white};
+  --md-sys-color-surface: #{cb.$cb-white};
+  --md-sys-color-surface-container: #{cb.$cb-white};
+  --md-sys-color-on-surface: #{cb.$cb-near-black};
+  --md-sys-color-on-surface-variant: #{cb.$cb-muted-text};
+  --md-sys-color-outline: #{cb.$cb-purple-border};
+
+  // Angular Material 20 component tokens
+  --mat-sys-primary: #{cb.$cb-purple};
+  --mat-button-filled-container-shape: #{cb.$cb-radius-button};
+  --mat-button-protected-container-shape: #{cb.$cb-radius-button};
+  --mat-button-outlined-container-shape: #{cb.$cb-radius-button};
+  --mat-button-text-container-shape: #{cb.$cb-radius-button};
+  --mat-button-tonal-container-shape: #{cb.$cb-radius-button};
+  --mat-card-elevated-container-shape: #{cb.$cb-radius-card};
+  --mat-card-outlined-container-shape: #{cb.$cb-radius-card};
+  --mat-card-elevated-container-elevation: none;
+
+  // Toolbar tokens (src/app/core/shell/toolbar/_toolbar-tokens.scss)
+  --toolbar-surface: #{cb.$cb-white};
+  --toolbar-on-surface: #{cb.$cb-near-black};
+  --toolbar-primary: #{cb.$cb-purple};
+  --toolbar-font-family: #{cb.$cb-font-family};
+  --toolbar-nav-item-border-radius: #{cb.$cb-radius-button};
+}
+
+// Material Web buttons set their own colour tokens on the element.
+md-filled-button,
+md-outlined-button,
+md-elevated-button,
+md-text-button,
+md-filled-tonal-button {
+  --md-sys-color-primary: #{cb.$cb-purple};
+  --md-filled-button-container-color: #{cb.$cb-purple};
+  --md-filled-button-label-text-color: #{cb.$cb-white};
+  --md-filled-button-label-text-font: #{cb.$cb-font-family};
+  --md-outlined-button-label-text-font: #{cb.$cb-font-family};
+  --md-text-button-label-text-font: #{cb.$cb-font-family};
+  --md-outlined-button-label-text-color: #{cb.$cb-purple};
+  --md-text-button-label-text-color: #{cb.$cb-purple};
+  --md-filled-button-container-shape: #{cb.$cb-radius-button};
+  --md-outlined-button-container-shape: #{cb.$cb-radius-button};
+  --md-elevated-button-container-shape: #{cb.$cb-radius-button};
+  --md-text-button-container-shape: #{cb.$cb-radius-button};
+  --md-filled-tonal-button-container-shape: #{cb.$cb-radius-button};
+}
+
+// ---------------------------------------------------------------------------
+// Type and page
+// ---------------------------------------------------------------------------
+html body {
+  font-family: cb.$cb-font-family;
+  color: cb.$cb-near-black;
+  background: cb.$cb-off-white;
+}
+
+a {
+  color: cb.$cb-purple;
+}
+
+a:hover {
+  color: cb.$cb-purple-hover;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: cb.$cb-focus-ring;
+}
+
+// ---------------------------------------------------------------------------
+// Header: white, purple text, 3px purple-mid rule (agreement overview mockup)
+// ---------------------------------------------------------------------------
+#mifosx-toolbar.mat-toolbar {
+  background: cb.$cb-white !important;
+  color: cb.$cb-purple !important;
+  border-bottom: 3px solid cb.$cb-purple-mid;
+  box-shadow: none;
+
+  // Upstream sets white text for the primary-coloured toolbar; everything goes purple on white.
+  &,
+  * {
+    color: cb.$cb-purple !important;
+  }
+
+  .mdc-line-ripple::before,
+  .mat-mdc-form-field .mdc-line-ripple::after {
+    border-color: cb.$cb-purple-border !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Shapes: 3px buttons; flat white cards with the 2px purple border
+// ---------------------------------------------------------------------------
+.mat-mdc-button-base:not(.mat-mdc-icon-button):not(.mat-mdc-fab):not(.mat-mdc-mini-fab) {
+  border-radius: cb.$cb-radius-button;
+}
+
+.mat-mdc-card,
+mat-card {
+  background: cb.$cb-white;
+  border: cb.$cb-border-card;
+  border-radius: cb.$cb-radius-card !important;
+  box-shadow: none !important;
+}
+
+// ---------------------------------------------------------------------------
+// MVP scope: features hidden from the UI (savings, shares, groups, centres).
+// Elements are marked with class "lb-out-of-scope" in the templates.
+// Remove this rule to show them again.
+// ---------------------------------------------------------------------------
+.lb-out-of-scope {
+  display: none !important;
+}
+
+// The brand has no dark theme.
+mifosx-theme-toggle {
+  display: none !important;
+}

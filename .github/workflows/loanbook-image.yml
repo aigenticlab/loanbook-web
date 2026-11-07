@@ -1,0 +1,58 @@
+# Loanbook: build the themed web app image and push it to GHCR.
+#
+# Tag a commit on the "conister" branch with loanbook-vX.Y.Z to publish
+#   ghcr.io/aigenticlab/loanbook-web:vX.Y.Z
+# Then set WEBAPP_IMAGE / WEBAPP_TAG in aigenticlab/loanbook-mvp.
+name: Loanbook image
+
+on:
+  push:
+    tags: ['loanbook-v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Image tag to publish (e.g. v0.1.0-rc1)'
+        required: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Work out the image tag
+        id: tag
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          if [ -n "$INPUT_TAG" ]; then
+            echo "tag=$INPUT_TAG" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${GITHUB_REF_NAME#loanbook-}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/loanbook-web:${{ steps.tag.outputs.tag }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.licenses=MPL-2.0
+          build-args: |
+            PUPPETEER_SKIP_DOWNLOAD_ARG=true

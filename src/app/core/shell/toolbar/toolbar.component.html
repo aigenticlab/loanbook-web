@@ -131,8 +131,8 @@
 
 <mat-menu #institutionMenu="matMenu" [overlapTrigger]="false">
   <button mat-menu-item routerLink="/clients" tabindex="0">{{ 'labels.menus.Clients' | translate }}</button>
-  <button mat-menu-item routerLink="/groups" tabindex="0">{{ 'labels.menus.Groups' | translate }}</button>
-  <button mat-menu-item routerLink="/centers" tabindex="0">{{ 'labels.menus.Centers' | translate }}</button>
+  <button mat-menu-item routerLink="/groups" tabindex="0" class="lb-out-of-scope">{{ 'labels.menus.Groups' | translate }}</button>
+  <button mat-menu-item routerLink="/centers" tabindex="0" class="lb-out-of-scope">{{ 'labels.menus.Centers' | translate }}</button>
   <span class="hide-lt-md">
     <button mat-menu-item [routerLink]="['/accounting']" tabindex="0">
       {{ 'labels.menus.Accounting' | translate }}
@@ -151,7 +151,7 @@
     {{ 'labels.menus.Clients' | translate }}
   </button>
   <button mat-menu-item [routerLink]="['/reports', 'Loan']" tabindex="0">{{ 'labels.menus.Loans' | translate }}</button>
-  <button mat-menu-item [routerLink]="['/reports', 'Savings']" tabindex="0">
+  <button mat-menu-item [routerLink]="['/reports', 'Savings']" tabindex="0" class="lb-out-of-scope">
     {{ 'labels.menus.Savings' | translate }}
   </button>
   <button mat-menu-item [routerLink]="['/reports', 'Fund']" tabindex="0">{{ 'labels.menus.Funds' | translate }}</button>

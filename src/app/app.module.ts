@@ -60,6 +60,7 @@ import {
   MissingTranslationHandlerParams
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LoanbookTranslateLoader } from './loanbook/loanbook-translate-loader';
 
 import { AuthenticationInterceptor as TokenInterceptor } from './core/authentication/authentication.interceptor';
 import { TokenInterceptor as ZitadelTokenInterceptor } from './zitadel/token.interceptor';
@@ -94,7 +95,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: (httpBackend: HttpBackend, locationStrategy: LocationStrategy) => {
           const http = new HttpClient(httpBackend);
-          return new TranslateHttpLoader(http, `/assets/translations/`, '.json');
+          // Loanbook: upstream translations plus the Loanbook label overlay (src/app/loanbook/).
+          return new LoanbookTranslateLoader(http, `/assets/translations/`);
         },
         deps: [
           HttpBackend,

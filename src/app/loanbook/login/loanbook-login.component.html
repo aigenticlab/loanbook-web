@@ -1,0 +1,38 @@
+<!-- Loanbook: Conister Bank sign-in. Logic is the upstream LoginComponent. -->
+<div class="lb-login">
+  <section class="lb-brand" aria-label="Conister Bank Loanbook">
+    <div class="lb-brand-name">
+      <span class="lb-wordmark">Conister Bank</span>
+    </div>
+    <div class="lb-brand-hero">
+      <h1>Loanbook</h1>
+      <div class="lb-rule lb-rule-lime" aria-hidden="true"></div>
+      <p>Agreements, payments and reconciliation for asset finance, in one place.</p>
+    </div>
+    <p class="lb-brand-footer">Conister Bank Limited, Isle of Man. Internal system for authorised staff.</p>
+  </section>
+
+  <main class="lb-panel">
+    <div class="lb-card">
+      <div class="lb-card-heading">
+        <h2>Sign in</h2>
+        <div class="lb-rule lb-rule-lilac" aria-hidden="true"></div>
+        <p>Use your Loanbook username and password.</p>
+      </div>
+
+      @if (!resetPassword && !twoFactorAuthenticationRequired) {
+        <mifosx-login-form></mifosx-login-form>
+      }
+      @if (resetPassword) {
+        <mifosx-reset-password></mifosx-reset-password>
+      }
+      @if (twoFactorAuthenticationRequired) {
+        <mifosx-two-factor-authentication></mifosx-two-factor-authentication>
+      }
+
+      <p class="lb-card-footer">
+        Authorised users only. All activity is recorded. Problems signing in? Contact the IT service desk.
+      </p>
+    </div>
+  </main>
+</div>

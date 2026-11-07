@@ -47,7 +47,7 @@
             </mat-list-item>
           </div>
 
-          <div #savingsProducts>
+          <div #savingsProducts class="lb-out-of-scope">
             <mat-list-item [routerLink]="['saving-products']" *mifosxHasPermission="'READ_SAVINGSPRODUCT'">
               <div class="menu-list-item-content">
                 <div class="menu-left-section" [routerLink]="['saving-products']">
@@ -83,7 +83,7 @@
             </mat-list-item>
           </div>
 
-          <div #shareProducts>
+          <div #shareProducts class="lb-out-of-scope">
             <mat-list-item [routerLink]="['share-products']" *mifosxHasPermission="'READ_SHAREPRODUCT'">
               <div class="menu-list-item-content">
                 <div class="menu-left-section" [routerLink]="['share-products']">
@@ -267,7 +267,7 @@
             </div>
           </mat-list-item>
 
-          <div #fixedDepositProducts>
+          <div #fixedDepositProducts class="lb-out-of-scope">
             <mat-list-item [routerLink]="['fixed-deposit-products']" *mifosxHasPermission="'READ_FIXEDDEPOSITPRODUCT'">
               <div class="menu-list-item-content">
                 <div class="menu-left-section" [routerLink]="['fixed-deposit-products']">
@@ -303,7 +303,7 @@
             </mat-list-item>
           </div>
 
-          <div #recurringDepositProducts>
+          <div #recurringDepositProducts class="lb-out-of-scope">
             <mat-list-item
               [routerLink]="['recurring-deposit-products']"
               *mifosxHasPermission="'READ_RECURRINGDEPOSITPRODUCT'"

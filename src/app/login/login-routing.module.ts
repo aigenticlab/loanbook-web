@@ -11,13 +11,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 /** Custom Components */
-import { LoginComponent } from './login.component';
+// Loanbook: Conister Bank sign-in screen (same logic, new template).
+import { LoanbookLoginComponent } from '../loanbook/login/loanbook-login.component';
 
 /** Login Routes */
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoanbookLoginComponent,
     data: { title: 'Login' }
   }
 ];

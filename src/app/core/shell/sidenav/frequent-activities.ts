@@ -13,16 +13,6 @@ export const frequentActivities: any[] = [
     toolTip: 'Clients'
   },
   {
-    path: '/groups',
-    icon: 'users',
-    toolTip: 'Groups'
-  },
-  {
-    path: '/centers',
-    icon: 'building',
-    toolTip: 'Centers'
-  },
-  {
     path: '/accounting',
     icon: 'money-bill-alt',
     toolTip: 'Accounting'
