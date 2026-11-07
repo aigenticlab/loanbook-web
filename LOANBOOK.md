@@ -32,7 +32,8 @@ Our own work lives in separate files where possible, so upstream fixes still mer
 | `src/main.scss` | `@use 'theme/crestion/crestion'` (last import) |
 | `src/app/app.module.ts` | Uses `LoanbookTranslateLoader` |
 | `src/app/login/login-routing.module.ts` | Routes `/login` to `LoanbookLoginComponent` |
-| `src/index.html` | Hanken Grotesk font link, favicon |
+| `src/index.html` | Static title, description and link-preview (Open Graph) tags, Hanken Grotesk font link, favicon |
+| `src/manifest.json` | App name |
 | `src/app/core/shell/sidenav/sidenav.component.html` | Logo image; `lb-out-of-scope` on collection sheets |
 | `src/app/core/shell/sidenav/frequent-activities.ts` | Removed Groups and Centers shortcuts |
 | `src/app/core/shell/toolbar/toolbar.component.html` | `lb-out-of-scope` on Groups, Centers, Savings reports |

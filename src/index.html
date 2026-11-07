@@ -11,7 +11,15 @@
 <html lang="en" class="h-full bg-gray-100">
   <head>
     <meta charset="utf-8" />
-    <title>{{'APP_NAME' | translate}}</title>
+    <!-- Loanbook: static title and link-preview tags (crawlers do not run Angular) -->
+    <title>Crestion Bank Loanbook</title>
+    <meta name="description" content="Crestion Bank Loanbook: lessees, agreements, payments and arrears. Authorised staff only." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Crestion Bank" />
+    <meta property="og:title" content="Crestion Bank Loanbook" />
+    <meta property="og:description" content="Lessees, agreements, payments and arrears. Authorised staff only." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="robots" content="noindex, nofollow" />
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
