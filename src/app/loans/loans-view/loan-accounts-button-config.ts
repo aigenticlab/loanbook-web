@@ -8,6 +8,8 @@
 
 import { OptionData } from 'app/shared/models/option-data.model';
 
+import { loanActionInScope } from 'app/loanbook/scope';
+
 /** Recurring Deposits Account Buttons Configuration */
 export class LoansAccountButtonConfiguration {
   optionArray: {
@@ -32,15 +34,18 @@ export class LoansAccountButtonConfiguration {
   }
 
   get singleButtons() {
-    return this.buttonsArray;
+    // Loanbook: drop out-of-scope actions
+    return this.buttonsArray.filter((b) => loanActionInScope(b.name));
   }
 
   get options() {
-    return this.optionArray;
+    // Loanbook: drop out-of-scope actions
+    return this.optionArray.filter((b) => loanActionInScope(b.name));
   }
 
   get optionsPayment() {
-    return this.optionPaymentArray;
+    // Loanbook: drop out-of-scope actions
+    return this.optionPaymentArray.filter((b) => loanActionInScope(b.name));
   }
 
   setButtons(status: string) {

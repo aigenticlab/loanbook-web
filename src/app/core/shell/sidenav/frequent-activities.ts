@@ -6,7 +6,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-export const frequentActivities: any[] = [
+import { inScope } from '../../../loanbook/scope';
+
+const allFrequentActivities: any[] = [
   {
     path: '/clients',
     icon: 'user',
@@ -48,3 +50,6 @@ export const frequentActivities: any[] = [
     toolTip: 'Templates'
   }
 ];
+
+// Loanbook: only in-scope activities
+export const frequentActivities = allFrequentActivities.filter((a) => inScope(a.path));

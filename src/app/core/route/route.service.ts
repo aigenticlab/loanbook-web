@@ -14,6 +14,8 @@ import { ShellComponent } from '../shell/shell.component';
 
 /** Custom Guards */
 import { AuthenticationGuard } from '../authentication/authentication.guard';
+/** Loanbook: leasing scope guard */
+import { scopeGuard } from '../../loanbook/scope';
 
 /**
  * Provides helper methods to create routes.
@@ -29,7 +31,9 @@ export class Route {
       path: '',
       component: ShellComponent,
       children: routes,
-      canActivate: [AuthenticationGuard]
+      canActivate: [AuthenticationGuard],
+      // Loanbook: out-of-scope screens cannot be reached by URL
+      canActivateChild: [scopeGuard]
       // Reuse ShellComponent instance when navigating between child views
       // data: { reuse: true }
     };

@@ -52,38 +52,18 @@ export class SearchToolComponent {
   /** Sets the initial visibility of search input as hidden. Visible if true. */
   searchVisible = false;
   /** Resource Options */
+  // Loanbook: lessees and agreements only
   resourceOptions: any[] = [
-    {
-      name: 'All',
-      value: 'clients,clientIdentifiers,groups,savings,shares,loans'
-    },
-    {
-      name: 'Clients',
-      value: 'clients,clientIdentifiers'
-    },
-    {
-      name: 'Groups',
-      value: 'groups'
-    },
-    {
-      name: 'Savings',
-      value: 'savings'
-    },
-    {
-      name: 'Shares',
-      value: 'shares'
-    },
-    {
-      name: 'Loans',
-      value: 'loans'
-    }
+    { name: 'All', value: 'clients,clientIdentifiers,loans' },
+    { name: 'Clients', value: 'clients,clientIdentifiers' },
+    { name: 'Loans', value: 'loans' }
   ];
 
   /**
    * @param {Router} router Router
    */
   constructor() {
-    this.resource.patchValue('clients,clientIdentifiers,groups,savings,shares,loans');
+    this.resource.patchValue('clients,clientIdentifiers,loans');
   }
 
   /**

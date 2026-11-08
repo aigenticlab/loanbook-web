@@ -279,7 +279,7 @@
         </a>
       }
       @if (loanDetailsData.collateral) {
-        <a
+        <a class="lb-out-of-scope"
           mat-tab-link
           [routerLink]="['./loan-collateral']"
           routerLinkActive
@@ -323,7 +323,7 @@
         </a>
       }
       @if (loanDetailsData.isLoanProductLinkedToFloatingRate) {
-        <a
+        <a class="lb-out-of-scope"
           mat-tab-link
           [routerLink]="['./floating-interest-rates']"
           routerLinkActive
@@ -375,7 +375,7 @@
         {{ 'labels.inputs.Notes' | translate }}
       </a>
       @if (loanDetailsData.clientId) {
-        <a
+        <a class="lb-out-of-scope"
           mat-tab-link
           [routerLink]="['./standing-instruction']"
           routerLinkActive
@@ -386,7 +386,7 @@
         </a>
       }
       @if (loanDetailsData.status.active) {
-        <a
+        <a class="lb-out-of-scope"
           mat-tab-link
           [routerLink]="['./external-asset-owner']"
           routerLinkActive

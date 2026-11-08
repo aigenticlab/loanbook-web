@@ -7,6 +7,8 @@
  */
 
 /** Keyboard Shortcuts Button Configuration */
+import { inScope } from './loanbook/scope';
+
 export class KeyboardShortcutsConfiguration {
   buttonsArray: {
     title: string;
@@ -195,6 +197,7 @@ export class KeyboardShortcutsConfiguration {
   }
 
   get buttonCombinations() {
-    return this.buttonsArray;
+    // Loanbook: drop shortcuts to out-of-scope screens
+    return this.buttonsArray.filter((b) => !b.route || inScope('/' + b.route));
   }
 }

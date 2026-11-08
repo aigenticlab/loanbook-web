@@ -22,6 +22,8 @@ import { DocumentationLinksService } from 'app/shared/services/documentation-lin
 
 /** Custom Imports */
 import { frequentActivities } from './frequent-activities';
+/** Loanbook: leasing scope */
+import { inScope } from '../../../loanbook/scope';
 import { SettingsService } from 'app/settings/settings.service';
 import { NgClass } from '@angular/common';
 import { MatIconButton, MatButton } from '@angular/material/button';
@@ -192,6 +194,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         this.pushActivity('/templates');
       }
     });
+    // Loanbook: only in-scope shortcuts
+    this.mappedActivities = this.mappedActivities.filter((a: any) => a && inScope(a.path));
     this.mappedActivities.reverse();
   }
 

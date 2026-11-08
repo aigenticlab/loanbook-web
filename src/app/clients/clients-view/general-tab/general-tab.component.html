@@ -20,7 +20,7 @@
               <br />
             </p>
           </td>
-          <td>
+          <td class="lb-out-of-scope">
             <p>
               {{ 'labels.inputs.No. of Active Savings' | translate }} :{{ performanceHistory.activeSavings }} <br />
               {{ 'labels.inputs.Total Savings' | translate }} :{{ performanceHistory.totalSavings | formatNumber }}
@@ -242,7 +242,7 @@
           @if (!element.status.pendingApproval && !element.status.active && element.status.overpaid) {
             <span>
               <button
-                class="account-action-button"
+                class="lb-out-of-scope account-action-button"
                 mat-raised-button
                 color="primary"
                 matTooltip="{{ 'tooltips.Transfer Funds' | translate }}"
@@ -342,6 +342,8 @@
     </table>
   }
 
+  <!-- Loanbook: savings, deposits, shares and collateral are outside the leasing MVP -->
+  <div class="lb-out-of-scope">
   <!-- Saving overview Table -->
   <div class="heading-content">
     <div class="layout-column flex-50">
@@ -893,6 +895,8 @@
       [routerLink]="['../', 'client-collateral', row.collateralId]"
     ></tr>
   </table>
+
+  </div>
 
   <!-- PDF Viewer Modal -->
   <div *ngIf="showPdf" class="pdf-modal-overlay">

@@ -6,7 +6,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-const activities: any[] = [
+import { inScope } from '../loanbook/scope';
+
+const allActivities: any[] = [
   { activity: 'client', path: '/clients' },
   { activity: 'groups', path: '/groups' },
   { activity: 'centers', path: '/centers' },
@@ -60,5 +62,8 @@ const activities: any[] = [
   { activity: 'navigation', path: '/navigation' },
   { activity: '', path: 'home' }
 ];
+
+// Loanbook: only in-scope activities that have a route
+const activities = allActivities.filter((a) => a.path === 'home' || (a.path && inScope(a.path)));
 
 export { activities };

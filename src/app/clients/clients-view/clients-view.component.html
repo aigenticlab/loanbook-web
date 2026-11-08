@@ -133,7 +133,7 @@
               <table class="account-overview">
                 <tbody>
                   @if (clientViewData.groups.length > 0) {
-                    <tr>
+                    <tr class="lb-out-of-scope">
                       <td>
                         <b>{{ 'labels.inputs.Member Of' | translate }}</b>
                       </td>
@@ -261,14 +261,14 @@
         <button mat-menu-item class="lb-out-of-scope" *mifosxHasPermission="'CREATE_SHAREACCOUNT'" [routerLink]="['shares-accounts', 'create']">
           {{ 'labels.buttons.New Share Account' | translate }}
         </button>
-        <button
+        <button class="lb-out-of-scope"
           mat-menu-item
           *mifosxHasPermission="'CREATE_RECURRINGDEPOSITACCOUNT'"
           [routerLink]="['recurring-deposits-accounts', 'create-recurring-deposits-account']"
         >
           {{ 'labels.buttons.New Recurring Deposit Account' | translate }}
         </button>
-        <button
+        <button class="lb-out-of-scope"
           mat-menu-item
           *mifosxHasPermission="'CREATE_FIXEDDEPOSITACCOUNT'"
           [routerLink]="['fixed-deposits-accounts', 'create']"
@@ -349,13 +349,13 @@
         <button mat-menu-item (click)="doAction('Add Charge')" *mifosxHasPermission="'CREATE_CLIENTCHARGE'">
           {{ 'labels.buttons.Add Charge' | translate }}
         </button>
-        <button mat-menu-item (click)="doAction('Create Collateral')">
+        <button class="lb-out-of-scope" mat-menu-item (click)="doAction('Create Collateral')">
           {{ 'labels.buttons.Create Collateral' | translate }}
         </button>
-        <button mat-menu-item (click)="doAction('Survey')" [disabled]="true">
+        <button class="lb-out-of-scope" mat-menu-item (click)="doAction('Survey')" [disabled]="true">
           {{ 'labels.buttons.Survey' | translate }}
         </button>
-        <button
+        <button class="lb-out-of-scope"
           mat-menu-item
           (click)="doAction('Update Default Savings')"
           *mifosxHasPermission="'UPDATESAVINGSACCOUNT_CLIENT'"
@@ -371,7 +371,7 @@
         <button mat-menu-item (click)="doAction('Client Screen Reports')">
           {{ 'labels.buttons.Client Screen Reports' | translate }}
         </button>
-        <button
+        <button class="lb-out-of-scope"
           mat-menu-item
           (click)="doAction('Create Standing Instructions')"
           *mifosxHasPermission="'CREATE_STANDINGINSTRUCTION'"
@@ -380,7 +380,7 @@
         </button>
         @if (clientViewData.status.value !== 'Transfer on hold') {
           <span>
-            <button
+            <button class="lb-out-of-scope"
               mat-menu-item
               (click)="doAction('View Standing Instructions')"
               *mifosxHasPermission="'READ_STANDINGINSTRUCTION'"

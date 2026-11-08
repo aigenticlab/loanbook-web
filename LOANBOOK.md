@@ -19,6 +19,7 @@ Our own work lives in separate files where possible, so upstream fixes still mer
 | `src/theme/crestion/_crestion.scss` | Theme overrides: colours, Hanken Grotesk, 3px buttons, flat bordered cards, white header, hidden out-of-scope features |
 | `src/app/loanbook/loanbook-translate-loader.ts` | Loads upstream translations, then applies the Loanbook overlay |
 | `src/assets/translations/loanbook/en-US.json` | Label overlay: Client > Lessee, Loan > Agreement, Office > Branch, Loan product > Product, Loan officer > Account manager, Center > Centre, app name "Loanbook" |
+| `src/app/loanbook/scope.ts` | The leasing scope: out-of-scope URL prefixes, path segments and agreement actions. Drives the route guard and filters search, shortcuts and activity lists |
 | `src/app/loanbook/login/` | Crestion sign-in screen. Extends the upstream `LoginComponent`, so the login logic is unchanged |
 | `src/assets/images/crestion/logo-mark.svg` | Placeholder mark until the client supplies logo artwork |
 | `.github/workflows/loanbook-image.yml` | Builds and pushes the image to GHCR |
@@ -34,15 +35,23 @@ Our own work lives in separate files where possible, so upstream fixes still mer
 | `src/app/login/login-routing.module.ts` | Routes `/login` to `LoanbookLoginComponent` |
 | `src/index.html` | Static title, description and link-preview (Open Graph) tags, Hanken Grotesk font link, favicon |
 | `src/manifest.json` | App name |
-| `src/app/core/shell/sidenav/sidenav.component.html` | Logo image; `lb-out-of-scope` on collection sheets |
-| `src/app/core/shell/sidenav/frequent-activities.ts` | Removed Groups and Centers shortcuts |
-| `src/app/core/shell/toolbar/toolbar.component.html` | `lb-out-of-scope` on Groups, Centers, Savings reports |
-| `src/app/products/products.component.html` | `lb-out-of-scope` on savings, share, fixed and recurring deposit products |
-| `src/app/clients/clients-view/clients-view.component.html` | `lb-out-of-scope` on new savings and share accounts |
+| `src/app/core/route/route.service.ts` | `canActivateChild: [scopeGuard]` on the shell route, so out-of-scope URLs go to the home page |
+| `src/app/core/shell/sidenav/sidenav.component.html` | Logo image; `lb-out-of-scope` on navigation, checker inbox, collection sheets and the accounting shortcuts |
+| `src/app/core/shell/sidenav/sidenav.component.ts`, `frequent-activities.ts` | "Frequently accessed" icons filtered by `inScope` |
+| `src/app/core/shell/toolbar/toolbar.component.html` | `lb-out-of-scope` on Accounting, Configuration Wizard, Groups, Centers, Templates, and Savings, Funds and Accounting reports |
+| `src/app/home/activities.ts`, `src/app/keyboards-shortcut-config.ts` | Activity search and keyboard shortcuts filtered by `inScope` |
+| `src/app/shared/search-tool/search-tool.component.ts` | Search covers lessees and agreements only |
+| `src/app/products/products.component.html` | `lb-out-of-scope` on every product tile except loan products, charges and delinquency buckets |
+| `src/app/organization/organization.component.html` | `lb-out-of-scope` on investors, funds, provisioning, tellers, SMS, standing instructions, ad hoc query, bulk reassignment, data table checks |
+| `src/app/system/system.component.html` | `lb-out-of-scope` on maker checker, hooks, entity mapping, surveys, external events and services, two-factor |
+| `src/app/clients/clients-view/clients-view.component.html` | `lb-out-of-scope` on group membership, savings, share and deposit accounts, collateral, survey, default savings, standing instructions |
+| `src/app/clients/clients-view/general-tab/general-tab.component.html` | Savings figures, transfer funds, and the savings, deposit, share and collateral sections hidden |
+| `src/app/loans/loans-view/loans-view.component.html` | `lb-out-of-scope` on collateral, floating rate, standing instruction and external asset owner tabs |
+| `src/app/loans/loans-view/loan-accounts-button-config.ts` | Agreement actions filtered by `loanActionInScope` |
 
 ## Hiding features outside the MVP
 
-Elements marked `class="lb-out-of-scope"` are hidden by one rule in `src/theme/crestion/_crestion.scss`. They are hidden, not removed: the routes still exist, and Fineract permissions remain the real control. To bring a feature back, delete the class from its element.
+Elements marked `class="lb-out-of-scope"` are hidden by one rule in `src/theme/crestion/_crestion.scss`. They are hidden, not removed. Their routes are blocked by the scope guard in `src/app/loanbook/scope.ts`, which sends any out-of-scope URL to the home page. Fineract permissions remain the real control. To bring a feature back, delete the class from its element and its entry from `scope.ts`.
 
 ## Known gaps
 

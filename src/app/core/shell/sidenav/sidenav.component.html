@@ -80,7 +80,7 @@
           </mat-icon>
           <a matLine #dashboard>{{ 'labels.menus.Dashboard' | translate }}</a>
         </mat-list-item>
-        <mat-list-item
+        <mat-list-item class="lb-out-of-scope"
           [routerLink]="['/navigation']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'tooltips.Navigation' | translate }}"
@@ -92,7 +92,7 @@
           </mat-icon>
           <a matLine #navigation>{{ 'labels.menus.Navigation' | translate }}</a>
         </mat-list-item>
-        <mat-list-item
+        <mat-list-item class="lb-out-of-scope"
           [routerLink]="['/checker-inbox-and-tasks/checker-inbox']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'tooltips.Checker Inbox and Tasks' | translate }}"
@@ -142,7 +142,7 @@
           </mat-icon>
           <a matLine>{{ 'labels.menus.Notifications' | translate }}</a>
         </mat-list-item>
-        <mat-list-item
+        <mat-list-item class="lb-out-of-scope"
           [routerLink]="['/accounting/journal-entries/frequent-postings']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'tooltips.Frequent Postings' | translate }}"
@@ -154,7 +154,7 @@
           </mat-icon>
           <a matLine #frequentPostings>{{ 'labels.menus.Frequent Postings' | translate }}</a>
         </mat-list-item>
-        <mat-list-item
+        <mat-list-item class="lb-out-of-scope"
           [routerLink]="['/accounting/journal-entries/create']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'tooltips.Create Journal Entry' | translate }}"
@@ -166,7 +166,7 @@
           </mat-icon>
           <a matLine #createJournalEntry>{{ 'labels.menus.Create Journal Entry' | translate }}</a>
         </mat-list-item>
-        <mat-list-item
+        <mat-list-item class="lb-out-of-scope"
           [routerLink]="['/accounting/chart-of-accounts']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'tooltips.Chart Of Accounts' | translate }}"
