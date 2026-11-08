@@ -1,47 +1,181 @@
 {
   "replace": [
-    ["a Loan Product", "a Product"],
-    ["a Loan product", "a Product"],
-    ["a loan product", "a product"],
-    ["Loan Products", "Products"],
-    ["Loan Product", "Product"],
-    ["Loan products", "Products"],
-    ["Loan product", "Product"],
-    ["loan products", "products"],
-    ["loan product", "product"],
-    ["Loan Accounts", "Agreements"],
-    ["Loan Account", "Agreement"],
-    ["loan accounts", "agreements"],
-    ["loan account", "agreement"],
-    ["Loan Officers", "Account Managers"],
-    ["Loan Officer", "Account Manager"],
-    ["loan officers", "account managers"],
-    ["loan officer", "account manager"],
-    ["a Loan", "an Agreement"],
-    ["A Loan", "An Agreement"],
-    ["a loan", "an agreement"],
-    ["Loans", "Agreements"],
-    ["Loan", "Agreement"],
-    ["loans", "agreements"],
-    ["loan", "agreement"],
-    ["LOANS", "AGREEMENTS"],
-    ["LOAN", "AGREEMENT"],
-    ["Clients", "Lessees"],
-    ["Client", "Lessee"],
-    ["clients", "lessees"],
-    ["client", "lessee"],
-    ["CLIENTS", "LESSEES"],
-    ["CLIENT", "LESSEE"],
-    ["Head Office", "Head Office"],
-    ["Branch Office", "Branch"],
-    ["Offices", "Branches"],
-    ["Office", "Branch"],
-    ["offices", "branches"],
-    ["office", "branch"],
-    ["Centers", "Centres"],
-    ["Center", "Centre"],
-    ["centers", "centres"],
-    ["center", "centre"]
+    [
+      "Loans Account",
+      "Agreement"
+    ],
+    [
+      "Loan officer",
+      "Account manager"
+    ],
+    [
+      "a Loan Product",
+      "a Product"
+    ],
+    [
+      "a Loan product",
+      "a Product"
+    ],
+    [
+      "a loan product",
+      "a product"
+    ],
+    [
+      "Loan Products",
+      "Products"
+    ],
+    [
+      "Loan Product",
+      "Product"
+    ],
+    [
+      "Loan products",
+      "Products"
+    ],
+    [
+      "Loan product",
+      "Product"
+    ],
+    [
+      "loan products",
+      "products"
+    ],
+    [
+      "loan product",
+      "product"
+    ],
+    [
+      "Loan Accounts",
+      "Agreements"
+    ],
+    [
+      "Loan Account",
+      "Agreement"
+    ],
+    [
+      "loan accounts",
+      "agreements"
+    ],
+    [
+      "loan account",
+      "agreement"
+    ],
+    [
+      "Loan Officers",
+      "Account Managers"
+    ],
+    [
+      "Loan Officer",
+      "Account Manager"
+    ],
+    [
+      "loan officers",
+      "account managers"
+    ],
+    [
+      "loan officer",
+      "account manager"
+    ],
+    [
+      "a Loan",
+      "an Agreement"
+    ],
+    [
+      "A Loan",
+      "An Agreement"
+    ],
+    [
+      "a loan",
+      "an agreement"
+    ],
+    [
+      "Loans",
+      "Agreements"
+    ],
+    [
+      "Loan",
+      "Agreement"
+    ],
+    [
+      "loans",
+      "agreements"
+    ],
+    [
+      "loan",
+      "agreement"
+    ],
+    [
+      "LOANS",
+      "AGREEMENTS"
+    ],
+    [
+      "LOAN",
+      "AGREEMENT"
+    ],
+    [
+      "Clients",
+      "Lessees"
+    ],
+    [
+      "Client",
+      "Lessee"
+    ],
+    [
+      "clients",
+      "lessees"
+    ],
+    [
+      "client",
+      "lessee"
+    ],
+    [
+      "CLIENTS",
+      "LESSEES"
+    ],
+    [
+      "CLIENT",
+      "LESSEE"
+    ],
+    [
+      "Head Office",
+      "Head Office"
+    ],
+    [
+      "Branch Office",
+      "Branch"
+    ],
+    [
+      "Offices",
+      "Branches"
+    ],
+    [
+      "Office",
+      "Branch"
+    ],
+    [
+      "offices",
+      "branches"
+    ],
+    [
+      "office",
+      "branch"
+    ],
+    [
+      "Centers",
+      "Centres"
+    ],
+    [
+      "Center",
+      "Centre"
+    ],
+    [
+      "centers",
+      "centres"
+    ],
+    [
+      "center",
+      "centre"
+    ]
   ],
   "overrides": {
     "APP_NAME": "Crestion Bank Loanbook",

@@ -51,7 +51,7 @@
       <mat-label>{{ 'labels.inputs.Currency in multiples of' | translate }}</mat-label>
       <input
         type="number"
-        min="1"
+        min="0"
         matInput
         matTooltip="{{ 'tooltips.Enter multiples of currency value' | translate }}"
         formControlName="inMultiplesOf"
@@ -63,13 +63,15 @@
       </mat-error>
       <mat-error *ngIf="loanProductCurrencyForm.get('inMultiplesOf')?.hasError('min')">
         {{ 'labels.inputs.Currency in multiples of' | translate }}
-        {{ 'labels.commons.Minimum Value must be' | translate }} <strong>1</strong>
+        {{ 'labels.commons.Minimum Value must be' | translate }} <strong>0</strong>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="flex-48">
       <mat-label>{{ 'labels.inputs.Installment in multiples of' | translate }}</mat-label>
-      <input type="number" min="1" matInput formControlName="installmentAmountInMultiplesOf" required />
+      <input type="number" min="1" matInput formControlName="installmentAmountInMultiplesOf" />
+      <!-- Loanbook: optional; empty keeps instalments to the penny -->
+      <mat-hint>Leave empty for no rounding</mat-hint>
       <mat-error *ngIf="loanProductCurrencyForm.get('installmentAmountInMultiplesOf')?.hasError('required')">
         {{ 'labels.inputs.Installment in multiples of' | translate }} {{ 'labels.commons.is' | translate }}
         <strong>{{ 'labels.commons.required' | translate }}</strong>

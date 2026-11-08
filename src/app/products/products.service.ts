@@ -7,6 +7,7 @@
  */
 
 /** Angular Imports */
+import { UNSUPPORTED_LOAN_PRODUCT_FIELDS, withoutFields } from 'app/loanbook/fineract-compat';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -34,7 +35,8 @@ export class ProductsService {
   }
 
   createLoanProduct(loanProduct: string): Observable<any> {
-    return this.http.post('/loanproducts', loanProduct);
+    // Loanbook: drop fields Fineract 1.12.1 rejects
+    return this.http.post('/loanproducts', withoutFields(loanProduct, UNSUPPORTED_LOAN_PRODUCT_FIELDS));
   }
 
   getLoanProductsTemplate(): Observable<any> {
@@ -47,7 +49,8 @@ export class ProductsService {
   }
 
   updateLoanProduct(loanProductId: string, loanProduct: any): Observable<any> {
-    return this.http.put(`/loanproducts/${loanProductId}`, loanProduct);
+    // Loanbook: drop fields Fineract 1.12.1 rejects
+    return this.http.put(`/loanproducts/${loanProductId}`, withoutFields(loanProduct, UNSUPPORTED_LOAN_PRODUCT_FIELDS));
   }
 
   /**

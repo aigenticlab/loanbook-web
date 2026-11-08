@@ -120,9 +120,10 @@
           </mat-error>
         }
       </mat-form-field>
-      <mat-divider class="flex-98"></mat-divider>
-      <h3 class="mat-h3 flex-fill">{{ 'labels.heading.Savings Linkage' | translate }}</h3>
-      <mat-form-field class="flex-48">
+      <!-- Loanbook: savings linkage is outside the leasing MVP -->
+      <mat-divider class="lb-out-of-scope flex-98"></mat-divider>
+      <h3 class="lb-out-of-scope mat-h3 flex-fill">{{ 'labels.heading.Savings Linkage' | translate }}</h3>
+      <mat-form-field class="lb-out-of-scope flex-48">
         <mat-label>{{ 'labels.inputs.Link savings' | translate }}</mat-label>
         <mat-select formControlName="linkAccountId">
           @for (savingaccount of accountLinkingOptions; track savingaccount) {
@@ -132,7 +133,7 @@
           }
         </mat-select>
       </mat-form-field>
-      <mat-checkbox class="flex-48" formControlName="createStandingInstructionAtDisbursement">
+      <mat-checkbox class="lb-out-of-scope flex-48" formControlName="createStandingInstructionAtDisbursement">
         <p>{{ 'labels.inputs.Create standing instructions at disbursement' | translate }}</p>
       </mat-checkbox>
     </div>

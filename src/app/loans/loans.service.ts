@@ -7,6 +7,7 @@
  */
 
 /** Angular Imports */
+import { UNSUPPORTED_LOAN_FIELDS, withoutFields } from 'app/loanbook/fineract-compat';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -466,7 +467,8 @@ export class LoansService {
    * @param {any} loanAccount Loan Account
    */
   createLoansAccount(loanAccount: any): Observable<any> {
-    return this.http.post('/loans', loanAccount);
+    // Loanbook: drop fields Fineract 1.12.1 rejects
+    return this.http.post('/loans', withoutFields(loanAccount, UNSUPPORTED_LOAN_FIELDS));
   }
 
   getLoanDocuments(loanId: any): Observable<any> {
@@ -513,7 +515,8 @@ export class LoansService {
   }
 
   updateLoansAccount(loanId: any, loanData: any): Observable<any> {
-    return this.http.put(`/loans/${loanId}`, loanData);
+    // Loanbook: drop fields Fineract 1.12.1 rejects
+    return this.http.put(`/loans/${loanId}`, withoutFields(loanData, UNSUPPORTED_LOAN_FIELDS));
   }
 
   getTemplateData(templateId: any, loanId: any): Observable<any> {
@@ -655,7 +658,8 @@ export class LoansService {
   }
 
   calculateLoanSchedule(payload: any): Observable<any> {
-    return this.http.post('/loans?command=calculateLoanSchedule', payload);
+    // Loanbook: drop fields Fineract 1.12.1 rejects
+    return this.http.post('/loans?command=calculateLoanSchedule', withoutFields(payload, UNSUPPORTED_LOAN_FIELDS));
   }
 
   /**

@@ -45,8 +45,10 @@ export class LoanProductCurrencyStepComponent implements OnInit {
       digitsAfterDecimal: this.loanProductsTemplate.currency.decimalPlaces
         ? this.loanProductsTemplate.currency.decimalPlaces
         : 2,
-      inMultiplesOf: this.loanProductsTemplate.currency.inMultiplesOf || '',
-      installmentAmountInMultiplesOf: this.loanProductsTemplate.installmentAmountInMultiplesOf ?? 1
+      // Loanbook: 0 is valid (no rounding) and must not be blanked
+      inMultiplesOf: this.loanProductsTemplate.currency.inMultiplesOf ?? 0,
+      // Loanbook: empty means no rounding of instalments (Fineract stores null); 1 would round to whole units
+      installmentAmountInMultiplesOf: this.loanProductsTemplate.installmentAmountInMultiplesOf ?? null
     });
   }
 
@@ -64,18 +66,15 @@ export class LoanProductCurrencyStepComponent implements OnInit {
         ]
       ],
       inMultiplesOf: [
-        '',
+        0,
         [
           Validators.required,
-          Validators.min(1)
+          Validators.min(0)
         ]
       ],
       installmentAmountInMultiplesOf: [
-        '',
-        [
-          Validators.required,
-          Validators.min(1)
-        ]
+        null,
+        [Validators.min(1)]
       ]
     });
   }
