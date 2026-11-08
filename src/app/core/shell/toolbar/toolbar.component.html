@@ -36,6 +36,17 @@
   }
 
   <div class="tab-nav-bar">
+    <!-- Loanbook: lessees are the main way in -->
+    <a
+      class="tab-link"
+      [routerLink]="['/clients']"
+      routerLinkActive="lb-active"
+      tabindex="0"
+      *mifosxHasPermission="'READ_CLIENT'"
+    >
+      <fa-icon class="mr-05" icon="users" size="lg"></fa-icon>
+      {{ 'labels.menus.Clients' | translate }}
+    </a>
     <a
       #institution
       class="tab-link"
@@ -81,7 +92,13 @@
         <fa-icon class="mr-05" icon="shield-alt" size="lg"></fa-icon>
         {{ 'labels.menus.Admin' | translate }}
       </a>
-      <a #configWizard class="lb-out-of-scope tab-link" (click)="openDialog()" tabindex="0" *mifosxHasPermission="'READ_CONFIG_WIZARD'">
+      <a
+        #configWizard
+        class="lb-out-of-scope tab-link"
+        (click)="openDialog()"
+        tabindex="0"
+        *mifosxHasPermission="'READ_CONFIG_WIZARD'"
+      >
         <fa-icon class="mr-05" icon="info" size="lg"></fa-icon>
         {{ 'labels.menus.Configuration Wizard' | translate }}
       </a>
@@ -94,14 +111,15 @@
     <mifosx-search-tool tabindex="0"></mifosx-search-tool>
   </div>
 
-  <div #languageSelector class="white-text-language">
+  <!-- Loanbook: English only, so no language picker -->
+  <div #languageSelector class="lb-out-of-scope white-text-language">
     <mifosx-language-selector class="ml-1 language hide-lt-md" tabindex="0"></mifosx-language-selector>
   </div>
 
   <button
     mat-icon-button
     [matMenuTriggerFor]="languageMenu"
-    class="show-lt-md"
+    class="lb-out-of-scope show-lt-md"
     tabindex="0"
     [attr.aria-label]="'labels.menus.Language Selector' | translate"
     matTooltip="{{ 'labels.menus.Language Selector' | translate }}"
@@ -131,8 +149,12 @@
 
 <mat-menu #institutionMenu="matMenu" [overlapTrigger]="false">
   <button mat-menu-item routerLink="/clients" tabindex="0">{{ 'labels.menus.Clients' | translate }}</button>
-  <button mat-menu-item routerLink="/groups" tabindex="0" class="lb-out-of-scope">{{ 'labels.menus.Groups' | translate }}</button>
-  <button mat-menu-item routerLink="/centers" tabindex="0" class="lb-out-of-scope">{{ 'labels.menus.Centers' | translate }}</button>
+  <button mat-menu-item routerLink="/groups" tabindex="0" class="lb-out-of-scope">
+    {{ 'labels.menus.Groups' | translate }}
+  </button>
+  <button mat-menu-item routerLink="/centers" tabindex="0" class="lb-out-of-scope">
+    {{ 'labels.menus.Centers' | translate }}
+  </button>
   <span class="hide-lt-md">
     <button class="lb-out-of-scope" mat-menu-item [routerLink]="['/accounting']" tabindex="0">
       {{ 'labels.menus.Accounting' | translate }}
@@ -154,7 +176,9 @@
   <button mat-menu-item [routerLink]="['/reports', 'Savings']" tabindex="0" class="lb-out-of-scope">
     {{ 'labels.menus.Savings' | translate }}
   </button>
-  <button class="lb-out-of-scope" mat-menu-item [routerLink]="['/reports', 'Fund']" tabindex="0">{{ 'labels.menus.Funds' | translate }}</button>
+  <button class="lb-out-of-scope" mat-menu-item [routerLink]="['/reports', 'Fund']" tabindex="0">
+    {{ 'labels.menus.Funds' | translate }}
+  </button>
   <button class="lb-out-of-scope" mat-menu-item [routerLink]="['/reports', 'Accounting']" tabindex="0">
     {{ 'labels.menus.Accounting' | translate }}
   </button>
@@ -167,7 +191,9 @@
   </button>
   <button mat-menu-item [routerLink]="['/system']" tabindex="0">{{ 'labels.menus.System' | translate }}</button>
   <button mat-menu-item [routerLink]="['/products']" tabindex="0">{{ 'labels.menus.Products' | translate }}</button>
-  <button class="lb-out-of-scope" mat-menu-item routerLink="/templates" tabindex="0">{{ 'labels.menus.Templates' | translate }}</button>
+  <button class="lb-out-of-scope" mat-menu-item routerLink="/templates" tabindex="0">
+    {{ 'labels.menus.Templates' | translate }}
+  </button>
 </mat-menu>
 
 <!-- Application User Help Menu -->

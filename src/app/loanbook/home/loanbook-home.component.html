@@ -1,0 +1,117 @@
+<!--
+  Copyright since 2025 Mifos Initiative
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<!-- Loanbook: Crestion Bank home page. Design: Crestion Loanbook Screens (Claude Design). -->
+<div class="lb-home">
+  <section class="lb-home-head">
+    <div class="lb-home-title">
+      <h1>{{ greeting }}{{ name ? ', ' + name : '' }}</h1>
+      <div class="lb-rule" aria-hidden="true"></div>
+      <p>Your portfolio today. Figures are live from the loanbook.</p>
+    </div>
+    <div class="lb-home-actions">
+      <a class="lb-btn lb-btn-outline" [routerLink]="['/reports']">Reports</a>
+      <a class="lb-btn lb-btn-outline" [routerLink]="['/clients']">All lessees</a>
+      <a class="lb-btn lb-btn-accent" [routerLink]="['/clients', 'create']">Add a lessee</a>
+    </div>
+  </section>
+
+  <section class="lb-kpis" aria-label="Portfolio">
+    <div class="lb-kpi">
+      <span class="lb-kpi-label">Lessees</span>
+      <span class="lb-kpi-value">{{ loaded ? (lessees | number) : '-' }}</span>
+      <span class="lb-kpi-note">Registered with the bank</span>
+    </div>
+    <div class="lb-kpi">
+      <span class="lb-kpi-label">Active agreements</span>
+      <span class="lb-kpi-value">{{ loaded ? (activeAgreements | number) : '-' }}</span>
+      <span class="lb-kpi-note">Disbursed and running</span>
+    </div>
+    <div class="lb-kpi">
+      <span class="lb-kpi-label">Balance outstanding</span>
+      <span class="lb-kpi-value">{{
+        loaded ? (outstanding | currency: currency : 'symbol-narrow' : '1.0-0') : '-'
+      }}</span>
+      <span class="lb-kpi-note">Across active agreements</span>
+    </div>
+    <div class="lb-kpi">
+      <span class="lb-kpi-label">In arrears</span>
+      <span class="lb-kpi-value">{{
+        loaded ? (arrearsAmount | currency: currency : 'symbol-narrow' : '1.2-2') : '-'
+      }}</span>
+      <span class="lb-kpi-note">{{ arrearsCount }} {{ arrearsCount === 1 ? 'agreement' : 'agreements' }} overdue</span>
+    </div>
+  </section>
+
+  <section class="lb-home-grid">
+    <div class="lb-panel lb-panel-wide">
+      <div class="lb-panel-head">
+        <h2>Arrears</h2>
+        <a [routerLink]="['/reports', 'Loan']">Arrears reports</a>
+      </div>
+      @if (!loaded) {
+        <p class="lb-muted">Loading...</p>
+      } @else if (failed) {
+        <p class="lb-muted">The portfolio figures could not be loaded. Check your permissions or try again.</p>
+      } @else if (!arrears.length) {
+        <p class="lb-muted">No agreements are in arrears.</p>
+      } @else {
+        <div class="lb-table-wrap">
+          <table class="lb-table">
+            <thead>
+              <tr>
+                <th scope="col">Lessee</th>
+                <th scope="col">Agreement</th>
+                <th scope="col">Product</th>
+                <th scope="col">Overdue since</th>
+                <th scope="col" class="lb-num">Overdue</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of arrears; track row.loanId) {
+                <tr>
+                  <td>
+                    <a [routerLink]="['/clients', row.clientId, 'general']">{{ row.lessee }}</a>
+                  </td>
+                  <td>
+                    <a [routerLink]="['/clients', row.clientId, 'loans-accounts', row.loanId, 'general']">{{
+                      row.agreement
+                    }}</a>
+                  </td>
+                  <td>{{ row.product }}</td>
+                  <td>{{ row.since ? (row.since | date: 'd MMM yyyy') : '-' }}</td>
+                  <td class="lb-num">{{ row.overdue | currency: currency : 'symbol-narrow' : '1.2-2' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </div>
+
+    <div class="lb-panel lb-panel-tint">
+      <h2>Go to</h2>
+      <mat-form-field class="lb-search" appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Find a screen</mat-label>
+        <input matInput [matAutocomplete]="activitySearch" [formControl]="searchText" />
+      </mat-form-field>
+      <mat-autocomplete #activitySearch="matAutocomplete">
+        @for (activity of filteredActivities | async; track activity) {
+          <mat-option [routerLink]="activity.path">{{ activity.activity }}</mat-option>
+        }
+      </mat-autocomplete>
+      <ul class="lb-links">
+        <li><a [routerLink]="['/clients']">Lessees</a></li>
+        <li><a [routerLink]="['/products', 'loan-products']">Products</a></li>
+        <li><a [routerLink]="['/products', 'charges']">Fees and charges</a></li>
+        <li><a [routerLink]="['/reports']">Reports</a></li>
+        <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+      </ul>
+    </div>
+  </section>
+</div>

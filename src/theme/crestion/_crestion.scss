@@ -1,4 +1,12 @@
 /**
+ * Copyright since 2025 Mifos Initiative
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+/**
  * Loanbook: Crestion Bank theme overrides.
  *
  * Loaded last from src/main.scss so it wins over upstream styles without
@@ -96,9 +104,16 @@ a:hover {
   border-bottom: 3px solid cb.$cb-purple-mid;
   box-shadow: none;
 
-  // Upstream sets white text for the primary-coloured toolbar; everything goes purple on white.
-  &,
-  * {
+  // Upstream sets white text for the primary-coloured toolbar; it goes purple on white.
+  button,
+  a,
+  span,
+  input,
+  label,
+  mat-icon,
+  fa-icon,
+  svg,
+  path {
     color: cb.$cb-purple !important;
   }
 
@@ -106,12 +121,46 @@ a:hover {
   .mat-mdc-form-field .mdc-line-ripple::after {
     border-color: cb.$cb-purple-border !important;
   }
+
+  // Modern layout
+  height: 72px;
+  padding: 0 24px;
+  gap: 8px;
+
+  .tab-link {
+    color: cb.$cb-near-black !important;
+    font-weight: cb.$cb-fw-medium;
+    padding: 24px 4px 21px !important;
+    margin: 0 10px;
+    border-bottom: 3px solid transparent;
+    border-radius: 0 !important;
+    background: transparent !important;
+
+    fa-icon {
+      color: cb.$cb-muted-text !important;
+    }
+
+    &:hover,
+    &.lb-active {
+      color: cb.$cb-purple !important;
+      border-bottom-color: cb.$cb-purple;
+
+      fa-icon {
+        color: cb.$cb-purple !important;
+      }
+    }
+  }
+
+  .img-button img {
+    border-radius: 50%;
+    background: cb.$cb-lavender-pale;
+  }
 }
 
 // ---------------------------------------------------------------------------
 // Shapes: 3px buttons; flat white cards with the 2px purple border
 // ---------------------------------------------------------------------------
-.mat-mdc-button-base:not(.mat-mdc-icon-button):not(.mat-mdc-fab):not(.mat-mdc-mini-fab) {
+.mat-mdc-button-base:not(.mat-mdc-icon-button, .mat-mdc-fab, .mat-mdc-mini-fab) {
   border-radius: cb.$cb-radius-button;
 }
 
@@ -135,4 +184,380 @@ mat-card {
 // The brand has no dark theme.
 mifosx-theme-toggle {
   display: none !important;
+}
+
+// ===========================================================================
+// Modern layout (strip step 3). Matches "Crestion Loanbook Screens":
+// white header, big purple page titles with a lilac rule, flat white cards,
+// purple table headings on hairline rows. Upstream component styles are
+// encapsulated, hence the !important on the properties we take over.
+// ===========================================================================
+
+// --- Page and content width ---------------------------------------------------
+.mat-drawer-container,
+.mat-sidenav-content,
+#mifosx-shell-container {
+  background: cb.$cb-off-white !important;
+}
+
+mifosx-content > div,
+.breadcrumb-wrapper {
+  max-width: 1280px !important;
+  width: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+
+  @media (width <= 600px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+// --- Side bar -----------------------------------------------------------------
+.sidebar-panel.mat-sidenav {
+  background: cb.$cb-white !important;
+  border-right: 1px solid cb.$cb-grey-rule !important;
+  box-shadow: none !important;
+
+  .mat-mdc-list-item {
+    border-radius: cb.$cb-radius-button;
+  }
+
+  fa-icon {
+    color: cb.$cb-purple;
+  }
+}
+
+// --- Page title and breadcrumb --------------------------------------------------
+.breadcrumb-wrapper .breadcrumb {
+  margin: 32px 0 24px !important;
+  line-height: 1.3 !important;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+
+  .breadcrumb-title {
+    font-size: 34px !important;
+    font-weight: cb.$cb-fw-bold !important;
+    letter-spacing: -0.01em;
+    color: cb.$cb-purple;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 160px;
+      height: cb.$cb-rule;
+      margin-top: 12px;
+      background: cb.$cb-lilac;
+    }
+  }
+
+  .separator::before {
+    display: none !important;
+  }
+
+  .breadcrumb-label {
+    font-size: 14px !important;
+    color: cb.$cb-muted-text;
+
+    a {
+      color: cb.$cb-purple !important;
+    }
+  }
+}
+
+// --- Cards --------------------------------------------------------------------
+.mat-mdc-card {
+  .mat-mdc-card-content {
+    padding: 24px;
+  }
+}
+
+// Cards inside cards: one border is enough.
+.mat-mdc-card .mat-mdc-card {
+  border-width: 1px !important;
+  border-color: cb.$cb-grey-rule !important;
+}
+
+// --- Lessee and agreement header (was a purple block) --------------------------
+.account-card {
+  max-width: 1200px !important;
+  width: calc(100% - 80px) !important;
+  margin: 0 auto 40px !important;
+  overflow: hidden;
+
+  @media (width <= 600px) {
+    width: calc(100% - 32px) !important;
+  }
+
+  .header {
+    background: cb.$cb-white !important;
+    padding: 32px !important;
+    border-bottom: 1px solid cb.$cb-grey-rule;
+
+    &,
+    p,
+    td,
+    span,
+    b,
+    .account-card-title,
+    .account-overview,
+    .signature,
+    .mat-mdc-card-subtitle {
+      color: cb.$cb-near-black !important;
+    }
+
+    h3 {
+      font-size: 26px !important;
+      line-height: 1.25;
+      font-weight: cb.$cb-fw-bold !important;
+      color: cb.$cb-purple !important;
+      margin-bottom: 16px !important;
+
+      span,
+      b,
+      .mifosx-entity-name {
+        color: cb.$cb-purple !important;
+      }
+    }
+
+    .mat-mdc-card-subtitle b,
+    .account-overview td:first-child {
+      color: cb.$cb-muted-text !important;
+      font-weight: cb.$cb-fw-regular !important;
+    }
+
+    .account-overview {
+      width: auto !important;
+      min-width: 0 !important;
+
+      td:last-child {
+        text-align: right;
+      }
+
+      tr {
+        background: transparent !important;
+      }
+
+      td {
+        padding: 4px 16px 4px 0;
+        border: 0 !important;
+      }
+    }
+
+    .profile-image-container {
+      .profile-image {
+        width: 96px !important;
+        height: 96px !important;
+        border-radius: 50% !important;
+        background: cb.$cb-lavender-pale;
+      }
+
+      .signature {
+        background: transparent !important;
+        color: cb.$cb-purple !important;
+        font-size: 14px;
+      }
+
+      .client-image-button {
+        box-shadow: none !important;
+        border: 1px solid cb.$cb-purple-border !important;
+        background: cb.$cb-white !important;
+        color: cb.$cb-purple !important;
+      }
+    }
+
+    .actions-menu,
+    .actions-menu fa-icon {
+      color: cb.$cb-purple !important;
+    }
+
+    .loans-overview h3 {
+      font-size: 18px !important;
+      margin-bottom: 8px !important;
+    }
+  }
+
+  // Tabs under the header
+  .navigation-tabs {
+    background: cb.$cb-white !important;
+    border-bottom: 1px solid cb.$cb-grey-rule;
+    padding: 0 24px;
+
+    .mdc-tab {
+      text-transform: capitalize; // data table tabs come through in lower case
+      min-width: 0;
+      padding: 0 16px;
+    }
+
+    .mdc-tab__text-label {
+      color: cb.$cb-muted-text !important;
+      font-weight: cb.$cb-fw-medium;
+    }
+
+    .mdc-tab--active .mdc-tab__text-label {
+      color: cb.$cb-purple !important;
+      font-weight: cb.$cb-fw-bold;
+    }
+
+    .mdc-tab-indicator__content--underline {
+      border-color: cb.$cb-purple !important;
+      border-top-width: 3px !important;
+    }
+  }
+}
+
+// --- Tables -------------------------------------------------------------------
+table.mat-mdc-table,
+.mat-mdc-table {
+  background: transparent !important;
+
+  .mat-mdc-header-cell {
+    color: cb.$cb-purple !important;
+    font-weight: cb.$cb-fw-bold !important;
+    font-size: 14px;
+    border-bottom: 2px solid cb.$cb-purple !important;
+  }
+
+  .mat-mdc-cell {
+    border-bottom: 1px solid cb.$cb-grey-rule !important;
+    font-size: 14px;
+  }
+
+  .mat-mdc-row {
+    background: transparent !important;
+
+    &:hover {
+      background: rgba(cb.$cb-lilac-pale, 0.45) !important;
+    }
+  }
+}
+
+// --- Buttons: flat --------------------------------------------------------------
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+  box-shadow: none !important;
+  font-weight: cb.$cb-fw-medium;
+  letter-spacing: 0;
+}
+
+// --- Form fields ----------------------------------------------------------------
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: #{cb.$cb-radius-button};
+  --mdc-outlined-text-field-outline-color: #{cb.$cb-purple-border};
+  --mdc-outlined-text-field-focus-outline-color: #{cb.$cb-purple};
+  --mdc-filled-text-field-container-color: #{cb.$cb-white};
+  --mat-form-field-filled-container-color: #{cb.$cb-white};
+  --mat-form-field-filled-active-indicator-color: #{cb.$cb-purple-border};
+}
+
+// --- Menus and snack bars ---------------------------------------------------------
+.mat-mdc-menu-panel {
+  border: 1px solid cb.$cb-grey-rule;
+  border-radius: cb.$cb-radius-card !important;
+  box-shadow: 0 8px 24px rgba(cb.$cb-near-black, 0.08) !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background: cb.$cb-purple !important;
+  border-radius: cb.$cb-radius-card !important;
+}
+
+// --- Page titles on detail screens ------------------------------------------------
+// Lessee and agreement screens carry their own title in the header card, so the
+// tab name ("General") is not repeated as a page title. Home has its own heading.
+body:has(.account-card) .breadcrumb-wrapper .breadcrumb-title,
+body:has(.lb-home) mifosx-breadcrumb {
+  display: none !important;
+}
+
+body:has(.account-card) .breadcrumb-wrapper .breadcrumb {
+  margin-bottom: 16px !important;
+}
+
+mifosx-clients-view .account-card .header h3,
+mifosx-loans-view .account-card .header h3 {
+  // "Lessee Name :" and "Product :" prefixes: the heading speaks for itself
+  > b,
+  > span.m-r-5:first-of-type {
+    display: none !important;
+  }
+
+  // Status: a small dot, not a block
+  .fa-stop {
+    font-size: 12px !important;
+    vertical-align: middle;
+    margin-right: 12px;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+  }
+}
+
+// Agreement header: no clip-art; the figures are the point
+mifosx-loans-view .account-card .header .profile-image-container {
+  display: none !important;
+}
+
+// --- Plain tables and boxed sections ------------------------------------------------
+html body table {
+  border: 0 !important;
+}
+
+html body table tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.performance-history-container {
+  border: 0 !important;
+  padding: 20px 24px !important;
+  border-radius: cb.$cb-radius-card;
+  background: cb.$cb-lilac-pale;
+}
+
+.tab-container h3,
+.mat-typography .tab-container h3 {
+  font-size: 20px;
+  font-weight: cb.$cb-fw-bold;
+  color: cb.$cb-purple;
+  margin: 24px 0 12px;
+}
+
+.mat-mdc-table .mat-mdc-cell a,
+td a {
+  color: cb.$cb-purple !important;
+}
+
+.account-card .header-title-group {
+  justify-content: flex-start !important;
+  gap: 24px;
+
+  .account-card-title {
+    flex: 1 1 auto;
+  }
+
+  .account-overview td {
+    white-space: nowrap;
+  }
+}
+
+// Upstream colours paid amounts blue; keep them in the palette.
+.amount-minus {
+  color: cb.$cb-purple !important;
+}
+
+// Flat: no Material elevation shadows on tables and panels
+[class*='mat-elevation-z'] {
+  box-shadow: none !important;
+}
+
+.mat-mdc-table[class*='mat-elevation-z'] {
+  border: 1px solid cb.$cb-grey-rule !important;
+  border-radius: cb.$cb-radius-card;
+  overflow: hidden;
 }

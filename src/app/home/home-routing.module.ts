@@ -16,6 +16,8 @@ import { Route } from '../core/route/route.service';
 /** Custom Components */
 import { HomeComponent } from './home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+/** Loanbook: Crestion home page */
+import { LoanbookHomeComponent } from '../loanbook/home/loanbook-home.component';
 
 /** Custom Resolvers */
 import { OfficesResolver } from '../accounting/common-resolvers/offices.resolver';
@@ -30,7 +32,8 @@ const routes: Routes = [
     },
     {
       path: 'home',
-      component: HomeComponent,
+      // Loanbook: portfolio overview instead of the upstream home
+      component: LoanbookHomeComponent,
       data: { title: 'Home' }
     },
     {

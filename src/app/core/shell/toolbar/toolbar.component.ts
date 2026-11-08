@@ -7,6 +7,7 @@
  */
 
 /** Angular Imports */
+import { RouterLinkActive } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -71,7 +72,8 @@ import { DocumentationLinksService } from 'app/shared/services/documentation-lin
     NotificationsTrayComponent_1,
     ThemeToggleComponent,
     MatMenu,
-    MatMenuItem
+    MatMenuItem,
+    RouterLinkActive
   ]
 })
 export class ToolbarComponent implements OnInit, AfterViewInit, AfterContentChecked {
